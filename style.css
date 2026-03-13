@@ -6,6 +6,8 @@ body{
 }
 
 header{
+    background: linear-gradient(120deg, orange, red, purple, green);
+    color: white;
     text-align: center;
     padding: 25px;
 }
