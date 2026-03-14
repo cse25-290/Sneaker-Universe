@@ -24,6 +24,10 @@ nav{
 }
 
 nav a{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    border-radius: 5px;
     color: white;
     margin: 15px;
     text-decoration: dashed;
@@ -31,7 +35,7 @@ nav a{
 }
 
 nav a:hover{
-    color: yellow;
+    color: grey;
 }
 
 section{
