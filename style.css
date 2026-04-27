@@ -1,3 +1,5 @@
+<style>
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +13,7 @@ body {
 }
 
 header {
-  background: #001f3f; 
+  background: #001f3f;
   border-bottom: 1px solid red;
   padding: 15px 40px;
 }
@@ -159,3 +161,4 @@ footer a {
   text-decoration: none;
   margin: 0 10px;
 }
+</style>
