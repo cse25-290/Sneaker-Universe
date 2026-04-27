@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sneaker Galaxy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Sneaker Galaxy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -12,21 +12,21 @@
 <header>
   <div class="top-bar">
     <div class="logo">🚀 <span class="sneaker">Sneaker</span> <span class="galaxy">Galaxy</span></div>
+
     <div class="search-bar">
       <input type="text" placeholder="Search...">
     </div>
-    <div>(267) 77 407 814 🛒</div>
+
+    <div>
+      <button onclick="openCart()">🛒 Cart</button>
+    </div>
   </div>
 
   <nav>
     <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="#">Brands</a></li>
-      <li><a href="#">Kids</a></li>
-      <li><a href="#">Adults</a></li>
-      <li><a href="#">Sale</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Accessibility</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#checkout">Checkout</a></li>
     </ul>
   </nav>
 </header>
@@ -36,53 +36,128 @@
   <button>Shop Now</button>
 </section>
 
+<!-- BRAND HISTORY SECTION -->
+<section class="section" id="brands">
+  <h2>Sneaker Brand History</h2>
+
+  <div class="product-card">
+    <h3>Nike</h3>
+    <p><strong>Founded:</strong> 1964</p>
+    <p><strong>Founders:</strong> Phil Knight & Bill Bowerman</p>
+    <p><strong>Popular Sneakers:</strong> Air Force 1, Air Max, Air Jordan</p>
+  </div>
+
+  <div class="product-card">
+    <h3>Adidas</h3>
+    <p><strong>Founded:</strong> 1949</p>
+    <p><strong>Founder:</strong> Adolf Dassler</p>
+    <p><strong>Popular Sneakers:</strong> Superstar, Stan Smith, Yeezy</p>
+  </div>
+
+  <div class="product-card">
+    <h3>Puma</h3>
+    <p><strong>Founded:</strong> 1948</p>
+    <p><strong>Founder:</strong> Rudolf Dassler</p>
+    <p><strong>Popular Sneakers:</strong> Suede Classic, RS-X</p>
+  </div>
+
+  <div class="product-card">
+    <h3>New Balance</h3>
+    <p><strong>Founded:</strong> 1906</p>
+    <p><strong>Founder:</strong> William J. Riley</p>
+    <p><strong>Popular Sneakers:</strong> 990 Series, 574</p>
+  </div>
+
+  <div class="product-card">
+    <h3>Jordan</h3>
+    <p><strong>Founded:</strong> 1984</p>
+    <p><strong>Founder:</strong> Nike (in collaboration with Michael Jordan)</p>
+    <p><strong>Popular Sneakers:</strong> Air Jordan 1, Air Jordan 4, Air Jordan 11</p>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
 <section class="section">
   <h2>Featured Sneakers</h2>
   <div class="products">
-    <div class="product-card">Sneaker 1<br>Price</div>
-    <div class="product-card">Sneaker 2<br>Price</div>
-    <div class="product-card">Sneaker 3<br>Price</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Shop by Brand</h2>
-  <div class="brands">
-    <button>Nike</button>
-    <button>Adidas</button>
-    <button>Puma</button>
-    <button>New Balance</button>
-    <button>Jordan</button>
-  </div>
-</section>
-
-<section class="section">
-  <div class="categories">
-    <div class="category">
-      <h3>Kids Sneakers</h3>
-      <p>Sizes 1-13</p>
-      <button>View More</button>
+    <div class="product-card">
+      Nike Air Force 1<br>P1500<br>
+      <button onclick="addToCart('Nike Air Force 1',1500)">Add to Cart</button>
     </div>
 
-    <div class="category">
-      <h3>Adults Sneakers</h3>
-      <p>Sizes 6-12</p>
-      <button>View More</button>
+    <div class="product-card">
+      Adidas Superstar<br>P1400<br>
+      <button onclick="addToCart('Adidas Superstar',1400)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      Puma RS-X<br>P1300<br>
+      <button onclick="addToCart('Puma RS-X',1300)">Add to Cart</button>
     </div>
   </div>
 </section>
 
-<section class="section offers">
-  <h2>Special Offers</h2>
-  <p>Sale - Up to 30% Off</p>
-  <button>Shop Deals</button>
+<!-- CART SECTION -->
+<section class="section" id="cart" style="display:none;">
+  <h2>Your Cart</h2>
+  <ul id="cartItems"></ul>
+  <p><strong>Total: P<span id="total">0</span></strong></p>
+  <button onclick="goToCheckout()">Proceed to Checkout</button>
+</section>
+
+<!-- CHECKOUT -->
+<section class="section" id="checkout" style="display:none;">
+  <h2>Payment Details</h2>
+
+  <input type="text" placeholder="Full Name"><br><br>
+  <input type="text" placeholder="Card Number"><br><br>
+  <input type="text" placeholder="Expiry Date"><br><br>
+  <input type="text" placeholder="CVV"><br><br>
+
+  <button onclick="completePurchase()">Pay Now</button>
 </section>
 
 <footer>
-  <a href="#">About Us</a> |
-  <a href="#">Contact</a> |
-  <a href="#">Privacy Policy</a> |
-  <a href="#">Help</a>
+  <p>© Sneaker Galaxy</p>
 </footer>
 
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(name, price) {
+  cart.push({name, price});
+  total += price;
+  alert(name + " added to cart");
+}
+
+function openCart() {
+  document.getElementById("cart").style.display = "block";
+
+  let list = document.getElementById("cartItems");
+  list.innerHTML = "";
+
+  cart.forEach(item => {
+    let li = document.createElement("li");
+    li.textContent = item.name + " - P" + item.price;
+    list.appendChild(li);
+  });
+
+  document.getElementById("total").textContent = total;
+}
+
+function goToCheckout() {
+  document.getElementById("checkout").style.display = "block";
+}
+
+function completePurchase() {
+  alert("Payment Successful! Thank you for shopping.");
+  cart = [];
+  total = 0;
+  document.getElementById("cartItems").innerHTML = "";
+  document.getElementById("total").textContent = "0";
+}
+</script>
+
 </body>
+</html>
