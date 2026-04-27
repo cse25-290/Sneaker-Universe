@@ -11,7 +11,7 @@ body {
 }
 
 header {
-  background: #001f3f; /* darker navy */
+  background: #001f3f; 
   border-bottom: 1px solid red;
   padding: 15px 40px;
 }
@@ -22,13 +22,11 @@ header {
   align-items: center;
 }
 
-/* Logo styling */
 .logo {
   font-weight: bold;
   font-size: 22px;
 }
 
-/* Color each word separately */
 .logo .sneaker {
   color: red;
 }
